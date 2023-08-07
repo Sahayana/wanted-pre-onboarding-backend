@@ -8,13 +8,13 @@ jobs:
 
   checks:
 
-    runs-on: macos-latest
+    runs-on: ubuntu-20.04
     env:
       PIPENV_VENV_IN_PROJECT: enable
 
     services:
       mysql:
-          image: mysql
+          image: mysql:8.0
           env:
             MYSQL_DATABASE: wanted
             MYSQL_ROOT_PASSWORD: wanted
