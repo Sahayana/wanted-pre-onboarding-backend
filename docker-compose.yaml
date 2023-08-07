@@ -1,0 +1,32 @@
+version: "3"
+
+
+services:
+
+  mysql:
+  
+    image: mysql:8.0
+    hostname: mysql
+    enviorment:
+      MYSQL_DATABASE: wanted
+      MYSQL_ROOT_PASSWORD: wanted
+    ports:
+      - 3306:3306
+  
+  django:
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: django
+    enviorment:
+      - DEBUG=0
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/app/
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - mysql
+
+
