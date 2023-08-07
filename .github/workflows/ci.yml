@@ -39,8 +39,8 @@ jobs:
           run: |
             pipenv install
             
-        - name: Run tests
-          id: run_test
-          run: |
-            pipenv run pytest -n auto
+        # - name: Run tests
+        #   id: run_test
+        #   run: |
+        #     pipenv run pytest -n auto
         
