@@ -1,0 +1,32 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==3.2.13"
+djangorestframework = "==3.13.1"
+pytest = "==7.1.2"
+pytest-django = "==4.5.2"
+pymysql = "==1.0.2"
+types-pymysql = "==1.0.6"
+pre-commit = "*"
+black = "==22.3.0"
+flake8 = "==3.7.9"
+django-extensions = "*"
+factory-boy = "==3.2.0"
+djangorestframework-simplejwt = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"
+python_full_version = "3.7.6"
+
+[scripts]
+shell_local = "python manage.py shell_plus --settings=payhere.settings.local"
+shell_dev = "python manage.py shell_plus --settings=payhere.settings.dev"
+makemigrations_local = "python manage.py makemigrations --settings=payhere.settings.local"
+makemigrations_dev= "python manage.py makemigrations --settings=payhere.settings.dev"
+migrate_local = "python manage.py migrate --settings=payhere.settings.local"
+migrate_dev= "python manage.py migrate --settings=payhere.settings.dev"

@@ -1,0 +1,18 @@
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+.idea
+
+.env
+.env.*
+!.env.example
+db.sqlite3
+server_venv
+ngrok
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
