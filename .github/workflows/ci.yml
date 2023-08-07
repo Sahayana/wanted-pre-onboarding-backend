@@ -12,14 +12,15 @@ jobs:
     env:
       PIPENV_VENV_IN_PROJECT: enable
 
-    mysql:
-        image: mysql
-        env:
-          MYSQL_DATABASE: wanted
-          MYSQL_ROOT_PASSWORD: wanted
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    services:
+      mysql:
+          image: mysql
+          env:
+            MYSQL_DATABASE: wanted
+            MYSQL_ROOT_PASSWORD: wanted
+          ports:
+            - 3306:3306
+          options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
       
     steps:
         - name: Checkout source code
