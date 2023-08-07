@@ -9,3 +9,18 @@ repos:
     hooks:
       - id: flake8
         language_version: python3
+  - repo: https://github.com/pycqa/isort
+    rev: 5.8.0
+    hooks:
+      - id: isort
+        args: ["--profile", "black", "--skip", "__init__.py", "--filter-files"]
+        name: isort (python)
+        language_version: python3
+      - id: isort
+        name: isort (cython)
+        types: [cython]
+        language_version: python3
+      - id: isort
+        name: isort (pyi)
+        types: [pyi]
+        language_version: python3
