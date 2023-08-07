@@ -42,5 +42,5 @@ jobs:
         - name: Run tests
           id: run_test
           run: |
-            pipenv run pytest
+            pipenv run pytest -n auto
         
