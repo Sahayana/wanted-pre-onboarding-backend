@@ -10,7 +10,7 @@ repos:
       - id: flake8
         language_version: python3
   - repo: https://github.com/pycqa/isort
-    rev: 5.8.0
+    rev: 5.11.5
     hooks:
       - id: isort
         args: ["--profile", "black", "--skip", "__init__.py", "--filter-files"]

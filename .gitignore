@@ -8,7 +8,6 @@ local_settings.py
 
 .env
 .env.*
-!.env.example
 db.sqlite3
 server_venv
 ngrok
@@ -24,3 +23,7 @@ __pycache__/
 
 .pytype/
 .vscode/
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
