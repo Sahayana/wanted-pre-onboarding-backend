@@ -10,10 +10,10 @@ ALLOWED_HOSTS = [
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ["MYSQL_DATABASE"],
+        "NAME": "wanted",
         "USER": "root",
-        "PASSWORD": os.environ["MYSQL_ROOT_PASSWORD"],
-        "PORT": "33306",
-        "HOST": "localhost",
+        "PASSWORD": "wanted",
+        "PORT": "3306",
+        "HOST": "host.docker.internal",  # Docker mysql connection to Django on window operating.
     }
 }

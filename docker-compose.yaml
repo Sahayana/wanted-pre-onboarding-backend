@@ -6,10 +6,9 @@ services:
   mysql:
   
     image: mysql:8.0
-    hostname: mysql
-    enviorment:
-      MYSQL_DATABASE: wanted
-      MYSQL_ROOT_PASSWORD: wanted
+    environment:
+      MYSQL_DATABASE: "wanted"
+      MYSQL_ROOT_PASSWORD: "wanted"
     ports:
       - 3306:3306
   
@@ -18,9 +17,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    hostname: django
-    enviorment:
-      - DEBUG=0
+    environment:
+      DJANGO_SETTINGS_MODULE: wanted.settings.dev
     ports:
       - 8000:8000
     volumes:
