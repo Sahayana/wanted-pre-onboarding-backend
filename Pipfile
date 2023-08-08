@@ -19,6 +19,7 @@ djangorestframework-simplejwt = "*"
 gunicorn = "==20.0.4"
 python-dotenv = "*"
 isort = "==5.11.5"
+boto3 = "*"
 
 [dev-packages]
 awsebcli = "*"
