@@ -17,3 +17,6 @@ class Ariticle(models.Model):
 
     class Meta:
         verbose_name = "게시글"
+
+    def __str__(self) -> str:
+        return self.title
