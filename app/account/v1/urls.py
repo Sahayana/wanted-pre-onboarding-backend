@@ -1,5 +1,6 @@
-from account.v1.apis.user_api import UserCreateApiView
 from django.urls import include, path
+
+from app.account.v1.apis.user_api import UserCreateApiView
 
 app_name = "account"
 
