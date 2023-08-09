@@ -48,8 +48,6 @@ class LoginView(views.APIView):
         email = request.data["email"]
         password = request.data["password"]
 
-        user = authenticate(email=email, password=password)
-
         if not email_validater(email=email):
             return Response(
                 data={"error": "잘못된 이메일 양식입니다."}, status=status.HTTP_400_BAD_REQUEST
@@ -58,6 +56,8 @@ class LoginView(views.APIView):
             return Response(
                 data={"error": "비밀번호는 8자 이상입니다."}, status=status.HTTP_400_BAD_REQUEST
             )
+
+        user = authenticate(email=email, password=password)
 
         if not user:
             return Response(
