@@ -4,6 +4,7 @@ import pytest
 from django.test import Client
 from django.urls import reverse
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 
 from app.account.models import User
 from tests.account import factories as f

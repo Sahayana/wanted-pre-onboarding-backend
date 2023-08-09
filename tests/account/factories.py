@@ -2,6 +2,7 @@ import random
 import string
 
 import factory
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from app.account.models import User
 
@@ -25,3 +26,12 @@ class UserFactory(factory.django.DjangoModelFactory):
             self.set_password(extracted)
         else:
             self.set_password("sahayana!")
+
+    def get_access_token(self) -> str:
+        """
+        Factory로 생성한 더미유저의 access token 생성 및 반환
+        """
+
+        token = TokenObtainPairSerializer.get_token(user=self)
+
+        return str(token.access_token)
