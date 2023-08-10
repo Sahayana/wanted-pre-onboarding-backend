@@ -3,6 +3,7 @@ from rest_framework import permissions, status, views
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 from app.account.helpers import email_validater, password_validater
 from app.account.models import User
@@ -32,17 +33,11 @@ class UserCreateApiView(CreateAPIView):
         )
 
 
-class LoginView(views.APIView):
+class LoginView(TokenObtainPairView):
 
     permission_classes = [permissions.AllowAny]
 
-    def obtain_token(self, user: User):
-
-        token = TokenObtainPairSerializer.get_token(user=user)
-
-        return str(token.access_token), str(token)
-
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
 
         email = request.data["email"]
         password = request.data["password"]
@@ -56,16 +51,4 @@ class LoginView(views.APIView):
                 data={"error": "비밀번호는 8자 이상입니다."}, status=status.HTTP_400_BAD_REQUEST
             )
 
-        user = authenticate(email=email, password=password)
-
-        if not user:
-            return Response(
-                data={"error": "존재하지 않는 유저입니다."}, status=status.HTTP_400_BAD_REQUEST
-            )
-
-        access_token, refresh_token = self.obtain_token(user=user)
-
-        return Response(
-            data={"access_token": access_token, "refresh_token": refresh_token},
-            status=status.HTTP_200_OK,
-        )
+        return super().post(request, *args, **kwargs)
