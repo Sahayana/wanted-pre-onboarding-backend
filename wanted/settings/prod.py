@@ -1,11 +1,10 @@
 import os
 
+from dotenv import load_dotenv
+
 from .base import *
 
-# from wanted.enviorment import get_secret
-
-
-# get_secret("prod")
+load_dotenv(".env.production")
 
 ALLOWED_HOSTS = ["*"]
 
