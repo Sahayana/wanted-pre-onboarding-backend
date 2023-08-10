@@ -1,24 +1,20 @@
 import os
 
-from wanted.enviorment import get_secret
-
 from .base import *
-
-get_secret(env="prod")
 
 ALLOWED_HOSTS = ["*"]
 
-DEBUG = os.environ["DEBUG"]
+DEBUG = bool(int(os.environ["DEBUG"]))
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ["NAME"],
-        "USER": os.environ["USERNAME"],
-        "PASSWORD": os.environ["PASSWORD"],
-        "PORT": os.environ["PORT"],
-        "HOST": os.environ["HOST"],
+        "NAME": os.environ["MYSQL_DB_DBINSTANCEIDENTIFIER"],
+        "USER": os.environ["MYSQL_DB_USERNAME"],
+        "PASSWORD": os.environ["MYSQL_DB_PASSWORD"],
+        "PORT": os.environ["MYSQL_DB_PORT"],
+        "HOST": os.environ["MYSQL_DB_HOST"],
     }
 }
