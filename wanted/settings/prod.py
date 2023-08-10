@@ -6,7 +6,6 @@ ALLOWED_HOSTS = ["*"]
 
 DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
-SECRET_KEY = os.environ["SECRET_KEY"]
 
 DATABASES = {
     "default": {
