@@ -14,6 +14,7 @@ DATABASES = {
         "USER": "root",
         "PASSWORD": "wanted",
         "PORT": "3306",
-        "HOST": "host.docker.internal",  # Docker mysql connection to Django on window operating.
+        "HOST": "host.docker.internal",
+        "OPTIONS": {"charset": "utf8mb4"},
     }
 }

@@ -1,3 +1,6 @@
+import random
+import string
+
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from app.account.models import User
@@ -18,3 +21,10 @@ def authorization_header(token):
     header 인증
     """
     return {"HTTP_AUTHORIZATION": f"Bearer {token}"}
+
+
+def get_random_string(length: int):
+
+    letters = string.digits + string.ascii_lowercase
+    random_str = "".join(random.choice(letters) for _ in range(length))
+    return random_str

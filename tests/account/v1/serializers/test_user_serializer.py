@@ -4,7 +4,6 @@ import pytest
 
 from app.account.v1.serializers.user_serializer import UserCreateSerializer
 from tests.account import factories as f
-from tests.helpers import get_access_token
 
 pytestmark = pytest.mark.django_db
 

@@ -40,7 +40,7 @@ def test_로그인_성공시_토큰반환(client: Client):
     )
 
     assert res.status_code == status.HTTP_200_OK
-    assert res.data["access_token"] is not None
+    assert res.data["access"] is not None
 
 
 def test_로그인_유저정보_없을시_에러메시지_반환(client: Client):
@@ -58,8 +58,7 @@ def test_로그인_유저정보_없을시_에러메시지_반환(client: Client)
         reverse("account:v1:login"), data=data, content_type="application/json"
     )
 
-    assert res.status_code == status.HTTP_400_BAD_REQUEST
-    assert res.data["error"] == "존재하지 않는 유저입니다."
+    assert res.status_code == status.HTTP_401_UNAUTHORIZED
 
 
 def test_로그인_이메일_유효성검사_에러메시지_반환(client: Client):

@@ -44,7 +44,7 @@ class ArticleViewSets(viewsets.ModelViewSet):
         게시글 단건 조회합니다.
         """
 
-        article = self.get_queryset.get(id=pk)
+        article = self.get_queryset().filter(id=pk).first()
         serializer = self.get_serializer(article)
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
@@ -56,7 +56,7 @@ class ArticleViewSets(viewsets.ModelViewSet):
         조회당 게시글 10개 반환 (page_size=10)
         """
 
-        articles = self.get_queryset()
+        articles = self.get_queryset().order_by("-created_at")
         paginated_articles = self.paginate_queryset(articles)
 
         serializer = self.get_serializer(paginated_articles, many=True)
@@ -95,26 +95,25 @@ class ArticleViewSets(viewsets.ModelViewSet):
         parameter
             -content
         """
-        article = self.get_object()
+        obj = self.get_object()
 
-        if request.user.id != article.user.id:
+        if request.user.id != obj.user.id:
             return Response(
                 data={"error": "작성자만 수정할 수 있습니다."}, status=status.HTTP_400_BAD_REQUEST
             )
 
-        serializer = self.get_serializer(
-            instance=article, data=request.data, partial=True
-        )
-        serializer.is_vaild(raise_exception=True)
+        serializer = self.get_serializer(instance=obj, data=request.data)
+
+        serializer.is_valid(raise_exception=True)
 
         validated_data = serializer.validated_data
 
-        article = Ariticle.objects.filter(id=article.id).update(
-            content=validated_data["content"]
-        )
+        Ariticle.objects.filter(id=obj.id).update(content=validated_data["content"])
+
+        obj.refresh_from_db()
 
         return Response(
-            ArticleReadSerializer(article).data,
+            ArticleReadSerializer(instance=obj).data,
             status=status.HTTP_200_OK,
         )
 
