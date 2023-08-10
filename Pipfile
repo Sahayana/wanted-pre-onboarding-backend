@@ -19,6 +19,7 @@ gunicorn = "==20.0.4"
 python-dotenv = "*"
 isort = "==5.11.5"
 pymysql = {extras = ["rsa"], version = "*"}
+boto3 = "*"
 
 [dev-packages]
 awsebcli = "*"

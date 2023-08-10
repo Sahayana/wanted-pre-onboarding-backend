@@ -1,6 +1,10 @@
 import os
 
+from wanted.enviorment import get_secret
+
 from .base import *
+
+get_secret("prod")
 
 ALLOWED_HOSTS = ["*"]
 
