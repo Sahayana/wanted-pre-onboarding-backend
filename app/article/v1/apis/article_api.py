@@ -88,6 +88,12 @@ class ArticleViewSets(viewsets.ModelViewSet):
             -content
         """
         article = self.get_object()
+
+        if request.user.id != article.user.id:
+            return Response(
+                data={"error": "작성자만 수정할 수 있습니다."}, status=status.HTTP_400_BAD_REQUEST
+            )
+
         serializer = self.get_serializer(
             instance=article, data=request.data, partial=True
         )
