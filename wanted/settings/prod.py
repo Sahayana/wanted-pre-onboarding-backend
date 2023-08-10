@@ -1,6 +1,6 @@
 import os
 
-from enviorment import get_secret
+from wanted.enviorment import get_secret
 
 from .base import *
 
