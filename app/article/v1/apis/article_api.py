@@ -73,12 +73,20 @@ class ArticleViewSets(viewsets.ModelViewSet):
         """
 
         serializer = self.get_serializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(
-                data=ArticleReadSerializer(serializer.instance).data,
-                status=status.HTTP_201_CREATED,
-            )
+        serializer.is_valid(raise_exception=True)
+
+        validated_data = serializer.validated_data
+
+        article = Ariticle.objects.create(
+            user=request.user,
+            title=validated_data["title"],
+            content=validated_data["content"],
+        )
+
+        return Response(
+            data=ArticleReadSerializer(instance=article).data,
+            status=status.HTTP_201_CREATED,
+        )
 
     def update(self, request, *args, **kwargs):
         """
@@ -97,12 +105,18 @@ class ArticleViewSets(viewsets.ModelViewSet):
         serializer = self.get_serializer(
             instance=article, data=request.data, partial=True
         )
-        if serializer.is_vaild(raise_exception=True):
-            serializer.save()
-            return Response(
-                ArticleReadSerializer(serializer.instance).data,
-                status=status.HTTP_200_OK,
-            )
+        serializer.is_vaild(raise_exception=True)
+
+        validated_data = serializer.validated_data
+
+        article = Ariticle.objects.filter(id=article.id).update(
+            content=validated_data["content"]
+        )
+
+        return Response(
+            ArticleReadSerializer(article).data,
+            status=status.HTTP_200_OK,
+        )
 
     def destroy(self, request, *args, **kwargs):
 
