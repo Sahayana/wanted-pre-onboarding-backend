@@ -8,7 +8,7 @@ load_dotenv(".env.production")
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wanted.settings.prod")
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["ec2-3-39-0-83.ap-northeast-2.compute.amazonaws.com"]
 
 DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
