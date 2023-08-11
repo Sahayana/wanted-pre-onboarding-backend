@@ -6,6 +6,8 @@ from .base import *
 
 load_dotenv(".env.production")
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wanted.settings.prod")
+
 ALLOWED_HOSTS = ["*"]
 
 DEBUG = bool(int(os.environ.get("DEBUG", 0)))
