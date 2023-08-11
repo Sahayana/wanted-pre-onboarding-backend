@@ -126,7 +126,7 @@ class ArticleViewSets(viewsets.ModelViewSet):
                 data={"error": "작성자만 삭제할 수 있습니다."}, status=status.HTTP_400_BAD_REQUEST
             )
 
-        self.perform_destroy(instance=article)
+        article.delete()
         return Response(
             data={"msg": "게시글이 삭제되었습니다."}, status=status.HTTP_204_NO_CONTENT
         )
