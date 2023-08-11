@@ -26,8 +26,12 @@ class UserCreateApiView(CreateAPIView):
 
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+            data = serializer.validated_data
+            user = User.objects.create(email=data["email"], password=data["password"])
+            return Response(
+                data=UserCreateSerializer(instance=user).data,
+                status=status.HTTP_201_CREATED,
+            )
         return Response(
             data=serializer.error_messages, status=status.HTTP_400_BAD_REQUEST
         )
