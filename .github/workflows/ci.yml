@@ -16,7 +16,7 @@ jobs:
       mysql:
           image: mysql:8.0
           env:
-            MYSQL_DATABASE: wanted
+            MYSQL_DATABASE: wanted_dev
             MYSQL_ROOT_PASSWORD: wanted
           ports:
             - 3306:3306

@@ -20,6 +20,7 @@ python-dotenv = "*"
 isort = "==5.11.5"
 pymysql = {extras = ["rsa"], version = "*"}
 boto3 = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 awsebcli = "*"

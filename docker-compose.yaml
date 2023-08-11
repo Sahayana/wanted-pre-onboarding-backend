@@ -5,12 +5,12 @@ services:
 
   mysql:
   
-    image: mysql:8.0
+    image: mysql:8.0.25
     environment:
-      MYSQL_DATABASE: "wanted"
+      MYSQL_DATABASE_NAME: "wanted"
       MYSQL_ROOT_PASSWORD: "wanted"
     ports:
-      - 3306:3306
+      - 33306:3306
   
   django:
 
@@ -23,8 +23,12 @@ services:
       - 8000:8000
     volumes:
       - ./:/app/
-    command: python manage.py runserver 0.0.0.0:8000
+    command: 
+      - bash
+      - -c
+      - |
+        /wait-for-it.sh mysql:3306 -t 60
+        python manage.py runserver
     depends_on:
       - mysql
-
 

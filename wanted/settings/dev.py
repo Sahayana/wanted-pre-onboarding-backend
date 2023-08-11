@@ -2,10 +2,8 @@ import os
 
 from .base import *
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ["*"]
+
 
 DATABASES = {
     "default": {
@@ -13,8 +11,7 @@ DATABASES = {
         "NAME": "wanted",
         "USER": "root",
         "PASSWORD": "wanted",
-        "PORT": "3306",
-        "HOST": "host.docker.internal",
-        "OPTIONS": {"charset": "utf8mb4"},
+        "PORT": "33306",
+        "HOST": "172.17.0.1",
     }
 }

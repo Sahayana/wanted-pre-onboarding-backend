@@ -11,3 +11,6 @@ COPY . /app/
 # Dependency
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
+ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /
+RUN chmod +x /wait-for-it.sh
