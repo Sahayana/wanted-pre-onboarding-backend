@@ -12,6 +12,6 @@ DATABASES = {
         "USER": "root",
         "PASSWORD": "wanted",
         "PORT": "33306",
-        "HOST": "172.17.0.1",
+        "HOST": "host.docker.internal",
     }
 }
