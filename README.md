@@ -10,7 +10,7 @@
  - 프레임워크: Django, Django-rest-framework(DRF)
  - 인프라: AWS EC2, AWS RDS
  - 개발환경: Docker, docker-compose
- - 테스트도구: pytest, pytest-django
+ - 테스트도구: pytest, pytest-django, factory-boy
  - CI/CD: Github Action, AWS CodeDeploy, AWS CodePipeline
 
 ## 개발환경설정
@@ -43,6 +43,15 @@ $ pipenv pytest
   - 엔드포인트: http://ec2-3-39-0-83.ap-northeast-2.compute.amazonaws.com/
   - Account: [API 명세](https://documenter.getpostman.com/view/21367981/2s9Xy3trWd)
   - Article: [API 명세](https://documenter.getpostman.com/view/21367981/2s9Xy3trWj)
+
+## 개발상세
+ - 과제 요구사항 모두 구현하였습니다.
+ - TDD방식으로 개발하였습니다.
+ - 비즈니스 로직 혼재를 피하기 위해 모델 관련 비즈니스 로직은 쿼리셋, 매니저 레벨에서 관리하고, 시리얼라이저는 validation 역할만 하며, 대부분의 로직은 View 단에서 작성합니다.
+ - 코드 포맷팅으로 flake8, black 사용하며 pre-commit 등록하여 관리했습니다.
+ - 로직에 주석 첨부하였습니다.
+ - 과제 초기 AWS Elasticbeanstalk으로 배포하다가 EC2로 재배포하였습니다.
+   - 환경을 강제로 종료하는 과정에서 배포 버전이 꼬여 EB 자체적으로 무한재배포하는 오류 발생
 
 ## 어플리케이션 데모 영상
   - [link](https://drive.google.com/file/d/1szvxFo5Yugr_3dNWpoDVJrpqK1OAwvMc/view?usp=sharing)
