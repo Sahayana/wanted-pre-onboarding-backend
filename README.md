@@ -40,7 +40,7 @@ $ pipenv pytest
 
 ## 어플리케이션 실행 방법 및 API 명세
 
-  - 엔드포인트: http://ec2-3-39-0-83.ap-northeast-2.compute.amazonaws.com/
+  - 엔드포인트: ~~http://ec2-3-39-0-83.ap-northeast-2.compute.amazonaws.com/~~ (서버종료)
   - Account: [API 명세](https://documenter.getpostman.com/view/21367981/2s9Xy3trWd)
   - Article: [API 명세](https://documenter.getpostman.com/view/21367981/2s9Xy3trWj)
 
